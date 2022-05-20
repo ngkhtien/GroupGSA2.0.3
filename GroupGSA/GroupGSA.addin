@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Group GSA Tools 2.0.3</Name>
+    <Assembly>GroupGSA.dll</Assembly>
+    <FullClassName>GroupGSA.App</FullClassName>
+    <ClientId>5654929E-3462-49F7-B335-CF8085B64DBE</ClientId>
+    <VendorId>Group GSA</VendorId>
+    <VendorDescription>Group GSA</VendorDescription>
+  </AddIn>  
+</RevitAddIns>
