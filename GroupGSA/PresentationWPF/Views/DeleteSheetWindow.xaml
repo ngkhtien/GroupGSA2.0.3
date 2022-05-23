@@ -96,7 +96,7 @@
                         VerticalAlignment="Center"
                         Orientation="Vertical">
 
-                <Button Click="BtnAddViewsClick"
+                <Button Click="BtnAddSheetsClick"
                         Width="35" Height="50" 
                         Content=">"
                         HorizontalAlignment="Center"
@@ -105,7 +105,7 @@
                         FontWeight="Bold" Foreground="White"
                         />
 
-                <Button Click="BtnRemoveViewsClick"
+                <Button Click="BtnRemoveSheetsClick"
                         Width="35" Height="50" 
                         Content="&lt;"
                         HorizontalAlignment="Center"

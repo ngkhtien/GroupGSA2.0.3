@@ -53,10 +53,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
       }
 
       public ObservableCollection<SheetExtension> AllSheetsExtension { get; set; } = new ObservableCollection<SheetExtension>();
-      public List<ViewExtension> SelectedSheetsExtension { get; set; }
+      public List<SheetExtension> SelectedSheetsExtension { get; set; }
       public ObservableCollection<SheetExtension> AllSheetsToRetain { get; set; } = new ObservableCollection<SheetExtension>();
-      public List<ViewExtension> SelectedSheetsToDelete { get; set; }
-    = new List<ViewExtension>();
+      public List<SheetExtension> SelectedSheetsToDelete { get; set; } = new List<SheetExtension>();
       #endregion
 
       #region Constructor
@@ -73,16 +72,58 @@ namespace GroupGSA.PresentationWPF.ViewModels
          // Identify WPF
          allSheets = new FilteredElementCollector(_doc).OfClass(typeof(ViewSheet)).Cast<ViewSheet>().ToList();
 
+         List<string> sheetNumber = new List<string>();
+
          foreach (ViewSheet viewSheet in allSheets)
          {
             SheetExtension level1 = new SheetExtension(viewSheet);
             AllSheetsExtension.Add(level1);
+
+            sheetNumber.Add(viewSheet.get_Parameter(BuiltInParameter.SHEET_NUMBER).AsString());
+         }
+
+         sheetNumber.Sort();
+
+         for (int i = 0; i < sheetNumber.Count; i++)
+         {
+            for (int j = 0; j < sheetNumber.Count; j++)
+            {
+               if (AllSheetsExtension[j].SheetNumber == sheetNumber[i])
+               {
+                  AllSheetsExtension.Move(j, i);
+                  break;
+               }
+            }         
          }
 
          OnPropertyChanged("AllSheetsExtension");
-
       }
       #endregion
 
+      public void AddSheets()
+      {
+         List<SheetExtension> allSheetsExtension = new List<SheetExtension>(AllSheetsExtension);
+
+         foreach (SheetExtension sheetExtension in allSheetsExtension)
+         {
+            if (sheetExtension.IsSelected)
+            {
+               AllSheetsToRetain.Add(sheetExtension);
+               AllSheetsExtension.Remove(sheetExtension);
+            }
+         }
+      }
+
+      public void RemoveSheets()
+      {
+         List<SheetExtension> selectedSheetsToDelete = new List<SheetExtension>(SelectedSheetsToDelete);
+
+         foreach (SheetExtension sheetExtension in selectedSheetsToDelete)
+         {
+            AllSheetsExtension.Add(sheetExtension);
+            AllSheetsToRetain.Remove(sheetExtension);
+            sheetExtension.IsSelected = false;
+         }
+      }
    }
 }

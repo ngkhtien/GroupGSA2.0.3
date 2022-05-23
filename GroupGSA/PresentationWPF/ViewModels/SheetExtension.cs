@@ -8,6 +8,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
       #region Field
       private bool _isSelected;
       private string _name;
+      private string _sheetNumber;
       #endregion
 
       #region Properties
@@ -21,6 +22,15 @@ namespace GroupGSA.PresentationWPF.ViewModels
          set
          {
             _name = value;
+            OnPropertyChanged();
+         }
+      }
+      public string SheetNumber
+      {
+         get => _sheetNumber;
+         set
+         {
+            _sheetNumber = value;
             OnPropertyChanged();
          }
       }
@@ -42,9 +52,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
       {
          SheetItems = new ObservableCollection<SheetExtension>();
          Sheet = viewSheet;
-         string sheetNumber = viewSheet.get_Parameter(BuiltInParameter.SHEET_NUMBER).AsString();
+         SheetNumber = viewSheet.get_Parameter(BuiltInParameter.SHEET_NUMBER).AsString();
          string sheetName = viewSheet.get_Parameter(BuiltInParameter.SHEET_NAME).AsString();
-         Name = sheetNumber + " - " + sheetName;
+         Name = SheetNumber + " - " + sheetName;
          IsSelected = false;
       }
       #endregion

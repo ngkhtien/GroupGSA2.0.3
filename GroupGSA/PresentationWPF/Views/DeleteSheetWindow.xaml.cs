@@ -32,17 +32,29 @@ namespace GroupGSA.PresentationWPF.Views
 
       private void SelectAllChecked(object sender, RoutedEventArgs e)
       {
-
+         if (_viewModel != null)
+         {
+            foreach (SheetExtension sheetExtension in _viewModel.AllSheetsExtension)
+            {
+               sheetExtension.IsSelected = true;
+            }
+         }
       }
 
       private void SelectNoneChecked(object sender, RoutedEventArgs e)
       {
-
+         if (_viewModel != null)
+         {
+            foreach (SheetExtension sheetExtension in _viewModel.AllSheetsExtension)
+            {
+               sheetExtension.IsSelected = false;
+            }
+         }
       }
 
       private void BtnCloseClick(object sender, RoutedEventArgs e)
       {
-
+         Close();
       }
 
       private void DeleteSheetClick(object sender, RoutedEventArgs e)
@@ -50,14 +62,14 @@ namespace GroupGSA.PresentationWPF.Views
 
       }
 
-      private void BtnAddViewsClick(object sender, RoutedEventArgs e)
+      private void BtnAddSheetsClick(object sender, RoutedEventArgs e)
       {
-
+         _viewModel.AddSheets();
       }
 
-      private void BtnRemoveViewsClick(object sender, RoutedEventArgs e)
+      private void BtnRemoveSheetsClick(object sender, RoutedEventArgs e)
       {
-
+         _viewModel.RemoveSheets();
       }
 
       private void TreeViewOnChecked(object sender, RoutedEventArgs e)
@@ -69,5 +81,6 @@ namespace GroupGSA.PresentationWPF.Views
       {
 
       }
+
    }
 }
