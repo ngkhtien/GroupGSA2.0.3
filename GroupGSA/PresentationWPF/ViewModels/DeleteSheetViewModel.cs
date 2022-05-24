@@ -127,6 +127,8 @@ namespace GroupGSA.PresentationWPF.ViewModels
                AllSheetsExtension.Remove(sheetExtension);
             }
          }
+
+         SortSheetList(sheetNumber, AllSheetsToRetain);
       }
 
       /// <summary>
