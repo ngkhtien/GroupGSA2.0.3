@@ -36,9 +36,11 @@ namespace GroupGSA.Command
          string dllFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
          AssemblyLoader.LoadAllRibbonAssemblies(dllFolder);
 
+         string actionName = "GSA | Delete Sheets";
+
          using (TransactionGroup transGroup = new TransactionGroup(Doc))
          {
-            transGroup.Start("Delete Sheets");
+            transGroup.Start(actionName);
 
             DeleteSheetViewModel viewModel = new DeleteSheetViewModel(uidoc);
 

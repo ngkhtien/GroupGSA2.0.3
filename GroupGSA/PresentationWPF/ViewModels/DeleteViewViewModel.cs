@@ -295,7 +295,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
          // Transaction delete views in project
          using (Transaction trans = new Transaction(_doc))
          {
-            trans.Start("Delete Views");
+            trans.Start("GSA | Delete Views");
 
             foreach (ElementId elementId in viewIdToDelete)
             {

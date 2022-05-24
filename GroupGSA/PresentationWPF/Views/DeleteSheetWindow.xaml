@@ -77,9 +77,7 @@
                                         Height="20">
 
                                 <CheckBox Style="{DynamicResource CheckBoxStyle}"
-                                          IsChecked="{Binding IsSelected}" 
-                                          Checked="TreeViewOnChecked"
-                                          Unchecked="TreeViewUnChecked"/>
+                                          IsChecked="{Binding IsSelected}" />
 
                                 <TextBlock Text="{Binding Name}"
                                            VerticalAlignment="Center" />

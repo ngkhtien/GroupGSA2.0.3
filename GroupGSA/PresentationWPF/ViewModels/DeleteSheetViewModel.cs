@@ -19,6 +19,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
       public bool _selectAllChecked;
       public bool _selectNoneChecked;
       public List<ViewSheet> allSheets = new List<ViewSheet>();
+      List<string> sheetNumber = new List<string>();
       #endregion
 
       #region Properties
@@ -32,7 +33,6 @@ namespace GroupGSA.PresentationWPF.ViewModels
          {
             _selectAllChecked = value;
 
-            //UpdateAllViewExtensions();
             OnPropertyChanged();
          }
       }
@@ -47,7 +47,6 @@ namespace GroupGSA.PresentationWPF.ViewModels
          {
             _selectNoneChecked = value;
 
-            //UpdateAllViewExtensions();
             OnPropertyChanged();
          }
       }
@@ -72,34 +71,50 @@ namespace GroupGSA.PresentationWPF.ViewModels
          // Identify WPF
          allSheets = new FilteredElementCollector(_doc).OfClass(typeof(ViewSheet)).Cast<ViewSheet>().ToList();
 
-         List<string> sheetNumber = new List<string>();
-
          foreach (ViewSheet viewSheet in allSheets)
          {
             SheetExtension level1 = new SheetExtension(viewSheet);
             AllSheetsExtension.Add(level1);
-
-            sheetNumber.Add(viewSheet.get_Parameter(BuiltInParameter.SHEET_NUMBER).AsString());
          }
 
-         sheetNumber.Sort();
-
-         for (int i = 0; i < sheetNumber.Count; i++)
-         {
-            for (int j = 0; j < sheetNumber.Count; j++)
-            {
-               if (AllSheetsExtension[j].SheetNumber == sheetNumber[i])
-               {
-                  AllSheetsExtension.Move(j, i);
-                  break;
-               }
-            }         
-         }
+         SortSheetList(sheetNumber, AllSheetsExtension);
 
          OnPropertyChanged("AllSheetsExtension");
       }
       #endregion
 
+      /// <summary>
+      /// Sort sheet list by sheet number
+      /// </summary>
+      /// <param name="sNumber"></param>
+      /// <param name="sExtension"></param>
+      public void SortSheetList(List<string> sNumber, ObservableCollection<SheetExtension> sExtension)
+      {
+         sNumber = new List<string>();
+
+         foreach (SheetExtension sheet in sExtension)
+         {
+            sNumber.Add(sheet.SheetNumber);
+         }
+
+         sNumber.Sort();
+
+         for (int i = 0; i < sNumber.Count; i++)
+         {
+            for (int j = 0; j < sNumber.Count; j++)
+            {
+               if (sExtension[j].SheetNumber == sNumber[i])
+               {
+                  sExtension.Move(j, i);
+                  break;
+               }
+            }
+         }
+      }
+
+      /// <summary>
+      /// Add sheets to retain
+      /// </summary>
       public void AddSheets()
       {
          List<SheetExtension> allSheetsExtension = new List<SheetExtension>(AllSheetsExtension);
@@ -114,6 +129,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
          }
       }
 
+      /// <summary>
+      /// Add sheet to remove
+      /// </summary>
       public void RemoveSheets()
       {
          List<SheetExtension> selectedSheetsToDelete = new List<SheetExtension>(SelectedSheetsToDelete);
@@ -124,6 +142,47 @@ namespace GroupGSA.PresentationWPF.ViewModels
             AllSheetsToRetain.Remove(sheetExtension);
             sheetExtension.IsSelected = false;
          }
+
+         SortSheetList(sheetNumber, AllSheetsExtension);
+      }
+
+      /// <summary>
+      /// Delete sheet
+      /// </summary>
+      public void DeleteSheet()
+      {
+         int countSheetDelete = 0;
+
+         IList<ElementId> sheetIdToDelete = new List<ElementId>();
+
+         foreach (SheetExtension iSheetExtension in AllSheetsExtension)
+         {
+            if (iSheetExtension.Sheet.Id != _doc.ActiveView.Id)
+            {
+               sheetIdToDelete.Add(iSheetExtension.Sheet.Id);
+            }
+         }
+
+         // Transaction delete sheets in project
+         using (Transaction trans = new Transaction(_doc))
+         {
+            trans.Start("GSA | Delete Sheets");
+
+            foreach (ElementId elementId in sheetIdToDelete)
+            {
+               try
+               {
+                  _doc.Delete(elementId);
+                  countSheetDelete += 1;
+               }
+               catch { }
+
+            }
+
+            trans.Commit();
+         }
+
+         MessageBox.Show("Deleted " + countSheetDelete + " Sheets!", "Delete Sheet", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
       }
    }
 }

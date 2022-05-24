@@ -36,9 +36,11 @@ namespace GroupGSA.Command
          string dllFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
          AssemblyLoader.LoadAllRibbonAssemblies(dllFolder);
 
+         string actionName = "GSA | Delete Views";
+
          using (TransactionGroup transGroup = new TransactionGroup(Doc))
          {
-            transGroup.Start("Delete Views");
+            transGroup.Start(actionName);
 
             DeleteViewViewModel viewModel = new DeleteViewViewModel(uidoc);
 
