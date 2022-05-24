@@ -51,8 +51,9 @@ namespace GroupGSA
 
       private void CreateButtonInPanelProjectManagement(GSAConstraint constraint, RibbonUtils ribbonUtils)
       {
-         PulldownButton projectCleaner = ribbonUtils.CreatePulldownButton(_pnlProjectManagement, "PROJECTCLEANER",
-            "Project Cleaner", "tooltip", ConstantsAndMessages.BUTTON_DELETEVIEW_IMAGE);
+         PulldownButton projectCleaner = ribbonUtils.CreatePulldownButton(_pnlProjectManagement, 
+            ConstantsAndMessages.PULLDOWN_PROJECTCLEANER_NAME, ConstantsAndMessages.PULLDOWN_PROJECTCLEANER_TEXT, 
+            ConstantsAndMessages.PULLDOWN_PROJECTCLEANER_TOOLTIP, ConstantsAndMessages.PULLDOWN_PROJECTCLEANER_IMAGE);
 
          PushButtonData pdDeleteView = ribbonUtils.CreatePushButtonData(ConstantsAndMessages.BUTTON_DELETEVIEW_NAME,
             ConstantsAndMessages.BUTTON_DELETEVIEW_TEXT, ConstantsAndMessages.DLL_NAME,

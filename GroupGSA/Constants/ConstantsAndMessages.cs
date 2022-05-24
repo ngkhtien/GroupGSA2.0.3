@@ -19,6 +19,11 @@ namespace GroupGSA.Constants
       public const string RIBBONPANEL_PROJECTSETUP = "Project Setup";
       public const string RIBBONPANEL_AUTOMATIONPACKAGE = "Automation Package";
 
+      public const string PULLDOWN_PROJECTCLEANER_NAME = "ProjectCleaner";
+      public const string PULLDOWN_PROJECTCLEANER_TEXT = "Project Cleaner";
+      public const string PULLDOWN_PROJECTCLEANER_IMAGE = "ProjectCleaner.ico";
+      public const string PULLDOWN_PROJECTCLEANER_TOOLTIP = "Quickly delete views, sheets, schedules and RVT/CAD Links";
+
       public const string BUTTON_DELETEVIEW_NAME = "cmdDeleteView";
       public const string BUTTON_DELETEVIEW_TEXT = "Delete View";
       public const string BUTTON_DELETEVIEW_IMAGE = "DeleteView.png";
