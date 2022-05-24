@@ -165,10 +165,12 @@ namespace GroupGSA.PresentationWPF.ViewModels
             }
          }
 
+         string caption = "GSA | Delete Sheet";
+
          // Transaction delete sheets in project
          using (Transaction trans = new Transaction(_doc))
          {
-            trans.Start("GSA | Delete Sheets");
+            trans.Start(caption);
 
             foreach (ElementId elementId in sheetIdToDelete)
             {
@@ -184,7 +186,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
             trans.Commit();
          }
 
-         MessageBox.Show("Deleted " + countSheetDelete + " Sheets!", "Delete Sheet", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+         MessageBox.Show("Deleted " + countSheetDelete + " Sheets!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
       }
    }
 }

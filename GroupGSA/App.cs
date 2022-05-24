@@ -13,7 +13,9 @@ namespace GroupGSA
 {
    public class App : IExternalApplication
    {
-      string path = Assembly.GetExecutingAssembly().Location;
+      string _assembly = Assembly.GetExecutingAssembly().Location;
+      RibbonPanel _pnlProjectManagement;
+
       public Result OnShutdown(UIControlledApplication application)
       {
          return Result.Succeeded;
@@ -41,16 +43,31 @@ namespace GroupGSA
 
          }
 
-         // Create Project Management ribbon panel
-         RibbonPanel panelProjectManagement = application.CreateRibbonPanel(ConstantsAndMessages.RIBBON_TAB, ConstantsAndMessages.RIBBONPANEL_PROJECTMANAGEMENT);
+         // Create Ribbon panel
+         _pnlProjectManagement = application.CreateRibbonPanel(ConstantsAndMessages.RIBBON_TAB, ConstantsAndMessages.RIBBONPANEL_PROJECTMANAGEMENT);
 
-         PushButtonData pushButtonData = ribbonUtils.CreatePushButtonData(ConstantsAndMessages.BUTTON_DELETEVIEW_NAME,
+         CreateButtonInPanelProjectManagement(constraint, ribbonUtils);
+      }
+
+      private void CreateButtonInPanelProjectManagement(GSAConstraint constraint, RibbonUtils ribbonUtils)
+      {
+         PulldownButton projectCleaner = ribbonUtils.CreatePulldownButton(_pnlProjectManagement, "PROJECTCLEANER",
+            "Project Cleaner", "tooltip", ConstantsAndMessages.BUTTON_DELETEVIEW_IMAGE);
+
+         PushButtonData pdDeleteView = ribbonUtils.CreatePushButtonData(ConstantsAndMessages.BUTTON_DELETEVIEW_NAME,
             ConstantsAndMessages.BUTTON_DELETEVIEW_TEXT, ConstantsAndMessages.DLL_NAME,
             typeof(CmdDeleteView).FullName, ConstantsAndMessages.BUTTON_DELETEVIEW_IMAGE,
             ConstantsAndMessages.BUTTON_DELETEVIEW_TOOLTIP, constraint.HelperPath,
             ConstantsAndMessages.BUTTON_DELETEVIEW_LONGDESCRIPTION);
 
-         panelProjectManagement.AddItem(pushButtonData);
+         PushButtonData pdDeleteSheet = ribbonUtils.CreatePushButtonData(ConstantsAndMessages.BUTTON_DELETESHEET_NAME,
+            ConstantsAndMessages.BUTTON_DELETESHEET_TEXT, ConstantsAndMessages.DLL_NAME,
+            typeof(CmdDeleteSheet).FullName, ConstantsAndMessages.BUTTON_DELETESHEET_IMAGE,
+            ConstantsAndMessages.BUTTON_DELETESHEET_TOOLTIP, constraint.HelperPath,
+            ConstantsAndMessages.BUTTON_DELETESHEET_LONGDESCRIPTION);
+
+         projectCleaner.AddPushButton(pdDeleteView);
+         projectCleaner.AddPushButton(pdDeleteSheet);
       }
    }
 }

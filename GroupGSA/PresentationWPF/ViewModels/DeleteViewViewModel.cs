@@ -292,10 +292,12 @@ namespace GroupGSA.PresentationWPF.ViewModels
             }
          }
 
+         string caption = "GSA | Delete View";
+
          // Transaction delete views in project
          using (Transaction trans = new Transaction(_doc))
          {
-            trans.Start("GSA | Delete Views");
+            trans.Start(caption);
 
             foreach (ElementId elementId in viewIdToDelete)
             {
@@ -311,7 +313,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
             trans.Commit();
          }
 
-         MessageBox.Show("Deleted " + countViewDelete + " Views!", "Delete View", MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+         MessageBox.Show("Deleted " + countViewDelete + " Views!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
       }
    }
 }
