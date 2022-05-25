@@ -1,13 +1,11 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using GroupGSA.Utils;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
-using View = Autodesk.Revit.DB.View;
 
 namespace GroupGSA.PresentationWPF.ViewModels
 {
