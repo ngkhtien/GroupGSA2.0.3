@@ -28,7 +28,7 @@ namespace GroupGSA.Constants
       public const string BUTTON_DELETEVIEW_TEXT = "Delete View";
       public const string BUTTON_DELETEVIEW_IMAGE = "DeleteView.png";
       public const string BUTTON_DELETEVIEW_TOOLTIP = "Delete views to cleanup project file";
-      public const string BUTTON_DELETEVIEW_LONGDESCRIPTION = "Cannot delete active view\nPlease switch to retain view/sheet/schedule to delete all views or switch to {3D View} to keep {3D View}";
+      public const string BUTTON_DELETEVIEW_LONGDESCRIPTION = "Cannot delete active view\nPlease switch to retain sheet/schedule to delete all views or switch to {3D View} to keep {3D View}";
 
       public const string BUTTON_DELETESHEET_NAME = "cmdDeleteSheet";
       public const string BUTTON_DELETESHEET_TEXT = "Delete Sheet";
