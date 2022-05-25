@@ -28,13 +28,19 @@ namespace GroupGSA.Constants
       public const string BUTTON_DELETEVIEW_TEXT = "Delete View";
       public const string BUTTON_DELETEVIEW_IMAGE = "DeleteView.png";
       public const string BUTTON_DELETEVIEW_TOOLTIP = "Delete views to cleanup project file";
-      public const string BUTTON_DELETEVIEW_LONGDESCRIPTION = "Cannot delete active view\nPlease switch to sheet view to delete all views or switch to {3D View} to keep {3D View}";
+      public const string BUTTON_DELETEVIEW_LONGDESCRIPTION = "Cannot delete active view\nPlease switch to retain view/sheet/schedule to delete all views or switch to {3D View} to keep {3D View}";
 
       public const string BUTTON_DELETESHEET_NAME = "cmdDeleteSheet";
       public const string BUTTON_DELETESHEET_TEXT = "Delete Sheet";
       public const string BUTTON_DELETESHEET_IMAGE = "DeleteSheet.png";
       public const string BUTTON_DELETESHEET_TOOLTIP = "Delete sheets to cleanup project file";
-      public const string BUTTON_DELETESHEET_LONGDESCRIPTION = "Cannot delete active sheet\nPlease switch to view to delete all sheets";
+      public const string BUTTON_DELETESHEET_LONGDESCRIPTION = "Cannot delete active sheet\nPlease switch to retain view to delete all sheets";
+
+      public const string BUTTON_DELETESCHEDULE_NAME = "cmdDeleteSchedule";
+      public const string BUTTON_DELETESCHEDULE_TEXT = "Delete Schedule";
+      public const string BUTTON_DELETESCHEDULE_IMAGE = "DeleteSchedule.png";
+      public const string BUTTON_DELETESCHEDULE_TOOLTIP = "Delete schedule to cleanup project file";
+      public const string BUTTON_DELETESCHEDULE_LONGDESCRIPTION = "Cannot delete active schedule\nPlease switch to retain view to delete all schedules";
 
       #endregion
 

@@ -21,6 +21,11 @@ namespace GroupGSA
          return Result.Succeeded;
       }
 
+      /// <summary>
+      /// Event when open Revit
+      /// </summary>
+      /// <param name="application"></param>
+      /// <returns></returns>
       public Result OnStartup(UIControlledApplication application)
       {
          CreateRibbonPanel(application);
@@ -49,6 +54,11 @@ namespace GroupGSA
          CreateButtonInPanelProjectManagement(constraint, ribbonUtils);
       }
 
+      /// <summary>
+      /// Create button in panel Project Management
+      /// </summary>
+      /// <param name="constraint"></param>
+      /// <param name="ribbonUtils"></param>
       private void CreateButtonInPanelProjectManagement(GSAConstraint constraint, RibbonUtils ribbonUtils)
       {
          PulldownButton projectCleaner = ribbonUtils.CreatePulldownButton(_pnlProjectManagement, 
@@ -67,8 +77,15 @@ namespace GroupGSA
             ConstantsAndMessages.BUTTON_DELETESHEET_TOOLTIP, constraint.HelperPath,
             ConstantsAndMessages.BUTTON_DELETESHEET_LONGDESCRIPTION);
 
+         PushButtonData pdDeleteSchedule = ribbonUtils.CreatePushButtonData(ConstantsAndMessages.BUTTON_DELETESCHEDULE_NAME,
+            ConstantsAndMessages.BUTTON_DELETESCHEDULE_TEXT, ConstantsAndMessages.DLL_NAME,
+            typeof(CmdDeleteSchedule).FullName, ConstantsAndMessages.BUTTON_DELETESCHEDULE_IMAGE,
+            ConstantsAndMessages.BUTTON_DELETESCHEDULE_TOOLTIP, constraint.HelperPath,
+            ConstantsAndMessages.BUTTON_DELETESCHEDULE_LONGDESCRIPTION);
+
          projectCleaner.AddPushButton(pdDeleteView);
          projectCleaner.AddPushButton(pdDeleteSheet);
+         projectCleaner.AddPushButton(pdDeleteSchedule);
       }
    }
 }
