@@ -23,6 +23,10 @@ namespace GroupGSA.PresentationWPF.Views
    {
       private DeleteScheduleViewModel _viewModel;
 
+      /// <summary>
+      /// Constructor
+      /// </summary>
+      /// <param name="viewModel"></param>
       public DeleteScheduleWindow(DeleteScheduleViewModel viewModel)
       {
          InitializeComponent();
@@ -31,6 +35,11 @@ namespace GroupGSA.PresentationWPF.Views
          DataContext = viewModel;
       }
 
+      /// <summary>
+      /// Event select all
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void SelectAllChecked(object sender, RoutedEventArgs e)
       {
          if (_viewModel != null)
@@ -42,6 +51,11 @@ namespace GroupGSA.PresentationWPF.Views
          }
       }
 
+      /// <summary>
+      /// Event unselect all
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void SelectNoneChecked(object sender, RoutedEventArgs e)
       {
          if (_viewModel != null)
@@ -53,24 +67,42 @@ namespace GroupGSA.PresentationWPF.Views
          }
       }
 
+      /// <summary>
+      /// Event add schedule to retain schedule list
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void BtnAddSchedulesClick(object sender, RoutedEventArgs e)
       {
          _viewModel.AddSchedules();
       }
 
+      /// <summary>
+      /// Event remove schedule from retain schedule list
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void BtnRemoveSchedulesClick(object sender, RoutedEventArgs e)
       {
          _viewModel.RemoveSchedules();
       }
 
-
-
+      /// <summary>
+      /// Event delete schedules
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void DeleteScheduleClick(object sender, RoutedEventArgs e)
       {
          _viewModel.DeleteSchedule();
          Close();
       }
 
+      /// <summary>
+      /// Event close
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void BtnCloseClick(object sender, RoutedEventArgs e)
       {
          Close();

@@ -22,6 +22,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
       #endregion
 
       #region Properties
+      /// <summary>
+      /// Event select all
+      /// </summary>
       public bool SelectAllChecked
       {
          get
@@ -36,6 +39,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
          }
       }
 
+      /// <summary>
+      /// Event unselect all
+      /// </summary>
       public bool SelectNoneChecked
       {
          get
@@ -81,10 +87,15 @@ namespace GroupGSA.PresentationWPF.ViewModels
 
          SortScheduleList(scheduleName, AllSchedulesExtension);
 
-         OnPropertyChanged("AllScheduleExtension");
+         OnPropertyChanged("AllSchedulesExtension");
       }
       #endregion
 
+      /// <summary>
+      /// Sort schedule list by name
+      /// </summary>
+      /// <param name="sName"></param>
+      /// <param name="sExtension"></param>
       public void SortScheduleList(List<string> sName, ObservableCollection<ScheduleExtension> sExtension)
       {
          sName = new List<string>();
@@ -109,6 +120,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
          }
       }
 
+      /// <summary>
+      /// Event add schedule to retain list
+      /// </summary>
       public void AddSchedules()
       {
          List<ScheduleExtension> allSchedulesExtension = new List<ScheduleExtension>(AllSchedulesExtension);
@@ -125,6 +139,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
          SortScheduleList(scheduleName, AllSchedulesToRetain);
       }
 
+      /// <summary>
+      /// Event remove schedule from retain list
+      /// </summary>
       public void RemoveSchedules()
       {
          List<ScheduleExtension> selectedSchedulesToDelete = new List<ScheduleExtension>(SelectedSchedulesToDelete);
@@ -139,6 +156,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
          SortScheduleList(scheduleName, AllSchedulesExtension);
       }
 
+      /// <summary>
+      /// Delete schedule
+      /// </summary>
       public void DeleteSchedule()
       {
          int countScheduleDelete = 0;
@@ -155,7 +175,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
 
          string caption = "GSA | Delete Schedule";
 
-         // Transaction delete sheets in project
+         // Transaction delete schedules in project
          using (Transaction trans = new Transaction(_doc))
          {
             trans.Start(caption);
