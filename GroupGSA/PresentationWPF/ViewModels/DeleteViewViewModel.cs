@@ -313,7 +313,14 @@ namespace GroupGSA.PresentationWPF.ViewModels
             trans.Commit();
          }
 
-         MessageBox.Show("Deleted " + countViewDelete + " Views!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+         if (countViewDelete > 1)
+         {
+            MessageBox.Show("Deleted " + countViewDelete + " Views!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+         }
+         else
+         {
+            MessageBox.Show("Deleted " + countViewDelete + " View!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+         }
       }
    }
 }

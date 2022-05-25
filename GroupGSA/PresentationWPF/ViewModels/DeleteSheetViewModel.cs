@@ -184,7 +184,14 @@ namespace GroupGSA.PresentationWPF.ViewModels
             trans.Commit();
          }
 
-         MessageBox.Show("Deleted " + countSheetDelete + " Sheets!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+         if (countSheetDelete > 1)
+         {
+            MessageBox.Show("Deleted " + countSheetDelete + " Sheets!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+         }
+         else
+         {
+            MessageBox.Show("Deleted " + countSheetDelete + " Sheet!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
+         }
       }
    }
 }
