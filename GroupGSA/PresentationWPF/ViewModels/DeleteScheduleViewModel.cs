@@ -78,7 +78,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
 
          foreach (ViewSchedule viewSchedule in allSchedule)
          {
-            if ((viewSchedule.IsTitleblockRevisionSchedule == false) & (viewSchedule.IsInternalKeynoteSchedule == false))
+            if ((viewSchedule.IsTitleblockRevisionSchedule == false) & (viewSchedule.IsInternalKeynoteSchedule == false) & (viewSchedule.Id != _doc.ActiveView.Id))
             {
                ScheduleExtension level1 = new ScheduleExtension(viewSchedule);
                AllSchedulesExtension.Add(level1);

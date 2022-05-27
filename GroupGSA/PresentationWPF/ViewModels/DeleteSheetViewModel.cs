@@ -71,8 +71,11 @@ namespace GroupGSA.PresentationWPF.ViewModels
 
          foreach (ViewSheet viewSheet in allSheets)
          {
-            SheetExtension level1 = new SheetExtension(viewSheet);
-            AllSheetsExtension.Add(level1);
+            if (viewSheet.Id != _doc.ActiveView.Id)
+            {
+               SheetExtension level1 = new SheetExtension(viewSheet);
+               AllSheetsExtension.Add(level1);
+            }
          }
 
          SortSheetList(sheetNumber, AllSheetsExtension);

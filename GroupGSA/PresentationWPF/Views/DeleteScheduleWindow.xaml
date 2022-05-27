@@ -70,8 +70,7 @@
 
                     <TreeView.ItemTemplate>
 
-                        <HierarchicalDataTemplate DataType="GroupGSA:ViewExtension"
-                                                  ItemsSource="{Binding ViewItems}">
+                        <HierarchicalDataTemplate>
 
                             <StackPanel Orientation="Horizontal"
                                         Height="20">
