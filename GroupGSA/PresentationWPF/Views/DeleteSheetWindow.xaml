@@ -146,8 +146,10 @@
 
             <CheckBox Grid.Row="2"
                       Content="Purge unused Title Block"
-                      Margin="5,0,0,0"
+                      Margin="2,0,0,0"
+                      FontSize="14"
                       VerticalAlignment="Center"
+                      Style="{DynamicResource CheckBoxStyle}"
                       IsChecked="{Binding IsPurgeTitleBlock}">
             </CheckBox>
         </Grid>
