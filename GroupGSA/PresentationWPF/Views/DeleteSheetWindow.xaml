@@ -54,6 +54,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -142,6 +143,13 @@
                        FontWeight="Bold" FontSize="15"
                        >
             </TextBlock>
+
+            <CheckBox Grid.Row="2"
+                      Content="Purge unused Title Block"
+                      Margin="5,0,0,0"
+                      VerticalAlignment="Center"
+                      IsChecked="{Binding IsPurgeTitleBlock}">
+            </CheckBox>
         </Grid>
     </DockPanel>
 </Window>

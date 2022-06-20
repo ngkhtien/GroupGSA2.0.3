@@ -141,9 +141,11 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AssemblyLoader.cs" />
+    <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\GSAComparer.cs" />
     <Compile Include="Utils\EqualityComparer.cs" />
     <Compile Include="Utils\GSAConstraint.cs" />
+    <Compile Include="Utils\Handler.cs" />
     <Compile Include="Utils\RibbonUtils.cs" />
     <Compile Include="Utils\ViewUtils.cs" />
   </ItemGroup>

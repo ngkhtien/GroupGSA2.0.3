@@ -53,6 +53,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
       public List<SheetExtension> SelectedSheetsExtension { get; set; }
       public ObservableCollection<SheetExtension> AllSheetsToRetain { get; set; } = new ObservableCollection<SheetExtension>();
       public List<SheetExtension> SelectedSheetsToDelete { get; set; } = new List<SheetExtension>();
+      public bool IsPurgeTitleBlock { get; set; } = new bool();
       #endregion
 
       #region Constructor
@@ -78,6 +79,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
             }
          }
 
+         IsPurgeTitleBlock = true;
          SortSheetList(sheetNumber, AllSheetsExtension);
 
          OnPropertyChanged("AllSheetsExtension");
@@ -185,6 +187,44 @@ namespace GroupGSA.PresentationWPF.ViewModels
             }
 
             trans.Commit();
+         }
+
+         if (IsPurgeTitleBlock)
+         {
+            List<Element> allTitleBlock = new FilteredElementCollector(_doc).OfCategory(BuiltInCategory.OST_TitleBlocks).WhereElementIsElementType().ToList();
+
+            IList<ElementId> titleBlockIdToDelete = new List<ElementId>();
+
+            foreach (FamilySymbol titleBlock in allTitleBlock)
+            {
+               int iid = titleBlock.Id.IntegerValue;
+               List <FamilyInstance>  allFamilyInstance = new FilteredElementCollector(_doc)
+                 .OfClass(typeof(FamilyInstance))
+                 .Where(e => e.GetTypeId().IntegerValue.Equals(iid)).Cast<FamilyInstance>().ToList();
+
+               if (allFamilyInstance.Count() == 0)
+               {
+                  titleBlockIdToDelete.Add(titleBlock.Id);
+                  titleBlockIdToDelete.Add(titleBlock.Family.Id);
+               }
+            }
+
+            using (Transaction trans = new Transaction(_doc))
+            {
+               trans.Start("Purge Title Block");
+
+               foreach (ElementId elementId in titleBlockIdToDelete)
+               {
+                  try
+                  {
+                     _doc.Delete(elementId);
+                  }
+                  catch { }
+
+               }
+
+               trans.Commit();
+            }
          }
 
          if (countSheetDelete > 1)
