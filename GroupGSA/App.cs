@@ -83,9 +83,16 @@ namespace GroupGSA
             ConstantsAndMessages.BUTTON_DELETESCHEDULE_TOOLTIP, constraint.HelperPath,
             ConstantsAndMessages.BUTTON_DELETESCHEDULE_LONGDESCRIPTION);
 
+         PushButtonData pdDeleteLink = ribbonUtils.CreatePushButtonData(ConstantsAndMessages.BUTTON_DELETELINK_NAME,
+            ConstantsAndMessages.BUTTON_DELETELINK_TEXT, ConstantsAndMessages.DLL_NAME,
+            typeof(CmdDeleteLink).FullName, ConstantsAndMessages.BUTTON_DELETELINK_IMAGE,
+            ConstantsAndMessages.BUTTON_DELETELINK_TOOLTIP, constraint.HelperPath,
+            ConstantsAndMessages.BUTTON_DELETELINK_LONGDESCRIPTION);
+
          projectCleaner.AddPushButton(pdDeleteView);
          projectCleaner.AddPushButton(pdDeleteSheet);
          projectCleaner.AddPushButton(pdDeleteSchedule);
+         projectCleaner.AddPushButton(pdDeleteLink);
       }
    }
 }

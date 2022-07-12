@@ -36,7 +36,7 @@ namespace GroupGSA.Command
          string dllFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
          AssemblyLoader.LoadAllRibbonAssemblies(dllFolder);
 
-         string actionName = "GSA | Delete Sheets";
+         string actionName = "GSA | Purge Sheets";
 
          using (TransactionGroup transGroup = new TransactionGroup(Doc))
          {

@@ -35,17 +35,32 @@ namespace GroupGSA.PresentationWPF.Views
          DataContext = viewModel;
       }
 
+      /// <summary>
+      /// Event delete link
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void DeleteLinkClick(object sender, RoutedEventArgs e)
       {
          _viewModel.DeleteLink();
          Close();
       }
 
+      /// <summary>
+      /// Event close click
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void BtnCloseClick(object sender, RoutedEventArgs e)
       {
          Close();
       }
 
+      /// <summary>
+      /// Event select all
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void SelectAllChecked(object sender, RoutedEventArgs e)
       {
          if (_viewModel != null)
@@ -62,6 +77,11 @@ namespace GroupGSA.PresentationWPF.Views
          }
       }
 
+      /// <summary>
+      /// Event select none
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void SelectNoneChecked(object sender, RoutedEventArgs e)
       {
          if (_viewModel != null)
@@ -78,21 +98,41 @@ namespace GroupGSA.PresentationWPF.Views
          }
       }
 
+      /// <summary>
+      /// Event add link
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void BtnAddLinksClick(object sender, RoutedEventArgs e)
       {
          _viewModel.AddLinks();
       }
 
+      /// <summary>
+      /// Event remove link
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void BtnRemoveLinksClick(object sender, RoutedEventArgs e)
       {
          _viewModel.RemoveLinks();
       }
 
+      /// <summary>
+      /// Event check on tree view
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void TreeViewOnChecked(object sender, RoutedEventArgs e)
       {
          _viewModel.CheckOnTreeView();
       }
 
+      /// <summary>
+      /// Event uncheck on tree view
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void TreeViewUnChecked(object sender, RoutedEventArgs e)
       {
          _viewModel.UncheckTreeView();

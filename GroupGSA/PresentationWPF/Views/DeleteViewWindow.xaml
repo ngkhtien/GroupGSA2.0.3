@@ -7,7 +7,7 @@
              xmlns:alphaBim="clr-namespace:AlphaBIM;assembly=AlphaBIMWPF"
              mc:Ignorable="d" 
         
-             Title="GroupGSA | Delete Views" ResizeMode="CanResize"
+             Title="GroupGSA | Purge Views" ResizeMode="CanResize"
              ShowInTaskbar="True"
              WindowStartupLocation="CenterScreen"
              Height="640" Width="650"
@@ -129,7 +129,7 @@
             </ListBox>
 
             <TextBlock Grid.Row="0" 
-                       Text="Select Views To Retain"
+                       Text="Select Views To Add To Retained List"
                        Style="{DynamicResource DataGridTextBlockStyle}" 
                        VerticalAlignment="Center" 
                        Margin="10,0,0,0" 

@@ -168,7 +168,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
             }
          }
 
-         string caption = "GSA | Delete Sheet";
+         string caption = "GSA | Purge Sheet";
 
          // Transaction delete sheets in project
          using (Transaction trans = new Transaction(_doc))

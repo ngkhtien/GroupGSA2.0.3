@@ -292,10 +292,11 @@ namespace GroupGSA.PresentationWPF.ViewModels
             }
          }
 
-         string caption = "GSA | Delete View";
+         string caption = "GSA | Purge View";
 
          // Transaction delete views in project
-         using (Transaction trans = new Transaction(_doc))
+         using (
+            Transaction trans = new Transaction(_doc))
          {
             trans.Start(caption);
 

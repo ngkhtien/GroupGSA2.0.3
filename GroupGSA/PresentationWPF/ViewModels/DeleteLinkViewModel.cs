@@ -84,6 +84,11 @@ namespace GroupGSA.PresentationWPF.ViewModels
             RVTLinks.LinkItems.Add(RVTLinkType);
          }
 
+         if (allRevitLink.Count == 0)
+         {
+            RVTLinks.Name = "No Revit Link found";
+         }
+
          // Find all CAD Links
          allCADLink = new FilteredElementCollector(_doc).OfClass(typeof(CADLinkType)).Cast<CADLinkType>().ToList();
 
@@ -93,6 +98,11 @@ namespace GroupGSA.PresentationWPF.ViewModels
          {
             LinkExtension linkCAD = new LinkExtension(CADLink);
             CADLinks.LinkItems.Add(linkCAD);
+         }
+
+         if (allCADLink.Count == 0)
+         {
+            CADLinks.Name = "No CAD Link found";
          }
 
          // Identify WPF 
@@ -223,6 +233,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
          SortLinkList(linkName, AllLinksExtension);
       }
 
+      /// <summary>
+      /// Event check on tree view
+      /// </summary>
       public void CheckOnTreeView()
       {
          foreach (LinkExtension linkExtension in AllLinksExtension)
@@ -239,6 +252,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
          }
       }
 
+      /// <summary>
+      /// Event uncheck on tree view
+      /// </summary>
       public void UncheckTreeView()
       {
          foreach (LinkExtension linkExtension in AllLinksExtension)
@@ -255,6 +271,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
          }
       }
 
+      /// <summary>
+      /// Purge Links in project
+      /// </summary>
       public void DeleteLink()
       {
          // Get RVTLink Id
@@ -273,9 +292,9 @@ namespace GroupGSA.PresentationWPF.ViewModels
             CADLinkToDelete.Add(CADLinkDelete.CADLink.Id);
          }
 
-         string caption = "GSA | Delete Links";
+         string caption = "GSA | Purge Links";
 
-         // Transaction delete links in project
+         // Transaction Purge Links in project
          int countRVTLink = 0;
          int countCADLink = 0;
 
@@ -283,6 +302,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
          {
             trans.Start(caption);
 
+            // Delete RVT Links
             foreach (ElementId elementId in RVTLinkToDelete)
             {
                try
@@ -293,6 +313,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
                catch { }
             }
 
+            // Delete CAD Links
             foreach (ElementId elementId in CADLinkToDelete)
             {
                try
@@ -306,6 +327,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
             trans.Commit();
          }
 
+         // Print RVT Link result
          if (countRVTLink > 1)
          {
             MessageBox.Show("Deleted " + countRVTLink + " RVT Links!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
@@ -315,6 +337,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
             MessageBox.Show("Deleted " + countRVTLink + " RVT Link!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);
          }
 
+         // Print CAD Link result
          if (countCADLink > 1)
          {
             MessageBox.Show("Deleted " + countCADLink + " CAD Links!", caption, MessageBoxButton.OK, (MessageBoxImage)MessageBoxIcon.Information);

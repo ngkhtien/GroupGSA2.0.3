@@ -15,11 +15,18 @@ using Application = Autodesk.Revit.ApplicationServices.Application;
 namespace GroupGSA.Command
 {
    /// <summary>
-   /// Delete unused views
+   /// Delete unused links
    /// </summary>
    [Transaction(TransactionMode.Manual)]
    public class CmdDeleteLink : IExternalCommand
    {
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="commandData"></param>
+      /// <param name="message"></param>
+      /// <param name="elements"></param>
+      /// <returns></returns>
       public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
       {
          UIApplication uiapp = commandData.Application;
@@ -27,10 +34,10 @@ namespace GroupGSA.Command
          Application app = uiapp.Application;
          Document Doc = uidoc.Document;
 
-         //string dllFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-         //AssemblyLoader.LoadAllRibbonAssemblies(dllFolder);
+         string dllFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+         AssemblyLoader.LoadAllRibbonAssemblies(dllFolder);
 
-         string actionName = "GSA | Delete Links";
+         string actionName = "GSA | Purge Links";
 
          using (TransactionGroup transGroup = new TransactionGroup(Doc))
          {

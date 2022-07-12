@@ -7,7 +7,7 @@
              xmlns:alphaBim="clr-namespace:AlphaBIM;assembly=AlphaBIMWPF"
              mc:Ignorable="d" 
              
-             Title="GroupGSA | Delete Schedules" ResizeMode="CanResize"
+             Title="GroupGSA | Purge Schedules" ResizeMode="CanResize"
              ShowInTaskbar="True"
              WindowStartupLocation="CenterScreen"
              Height="640" Width="650"
@@ -126,11 +126,11 @@
             </ListBox>
 
             <TextBlock Grid.Row="0" 
-                       Text="Select Schedules To Retain"
+                       Text="Select Schedules To Add To Retained List"
                        Style="{DynamicResource DataGridTextBlockStyle}" 
                        VerticalAlignment="Center" 
-                       Margin="10,0,0,0" 
-                       FontWeight="Bold" FontSize="15"
+                       Margin="5,15,0,15" 
+                       FontWeight="Bold" FontSize="15" Grid.ColumnSpan="2" Width="312"
                        >
             </TextBlock>
 

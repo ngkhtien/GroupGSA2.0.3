@@ -173,7 +173,7 @@ namespace GroupGSA.PresentationWPF.ViewModels
             }
          }
 
-         string caption = "GSA | Delete Schedule";
+         string caption = "GSA | Purge Schedule";
 
          // Transaction delete schedules in project
          using (Transaction trans = new Transaction(_doc))

@@ -7,7 +7,7 @@
              xmlns:alphaBim="clr-namespace:AlphaBIM;assembly=AlphaBIMWPF"
              mc:Ignorable="d" 
              
-             Title="GroupGSA | Delete Links" ResizeMode="CanResize"
+             Title="GroupGSA | Purge Links" ResizeMode="CanResize"
              ShowInTaskbar="True"
              WindowStartupLocation="CenterScreen"
              Height="640" Width="650"
@@ -128,7 +128,7 @@
             </ListBox>
 
             <TextBlock Grid.Row="0" 
-                       Text="Select RVT/CAD Links To Retain"
+                       Text="Select Links To Add To Retained List"
                        Style="{DynamicResource DataGridTextBlockStyle}" 
                        VerticalAlignment="Center" 
                        Margin="10,0,0,0" 
