@@ -15,6 +15,7 @@ namespace GroupGSA
    {
       string _assembly = Assembly.GetExecutingAssembly().Location;
       RibbonPanel _pnlProjectManagement;
+      RibbonPanel _pnlGroupGSA;
 
       public Result OnShutdown(UIControlledApplication application)
       {
@@ -49,9 +50,23 @@ namespace GroupGSA
          }
 
          // Create Ribbon panel
+
+         _pnlGroupGSA = application.CreateRibbonPanel(ConstantsAndMessages.RIBBON_TAB, ConstantsAndMessages.RIBBONPANEL_ABOUT);
          _pnlProjectManagement = application.CreateRibbonPanel(ConstantsAndMessages.RIBBON_TAB, ConstantsAndMessages.RIBBONPANEL_PROJECTMANAGEMENT);
 
+         CreateButtonPanelGroupGSA(constraint, ribbonUtils);
          CreateButtonInPanelProjectManagement(constraint, ribbonUtils);
+      }
+
+      private void CreateButtonPanelGroupGSA(GSAConstraint constraint, RibbonUtils ribbonUtils)
+      {
+         PushButtonData pdAbout = ribbonUtils.CreatePushButtonData(ConstantsAndMessages.BUTTON_ABOUT_NAME,
+            ConstantsAndMessages.BUTTON_ABOUT_TEXT, ConstantsAndMessages.DLL_NAME,
+            typeof(CmdAbout).FullName, ConstantsAndMessages.BUTTON_ABOUT_IMAGE,
+            ConstantsAndMessages.BUTTON_ABOUT_TOOLTIP, constraint.HelperPath,
+            ConstantsAndMessages.BUTTON_ABOUT_LONGDESCRIPTION);
+
+         _pnlGroupGSA.AddItem(pdAbout);
       }
 
       /// <summary>

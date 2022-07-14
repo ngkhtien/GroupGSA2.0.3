@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Command\CmdAbout.cs" />
     <Compile Include="Command\CmdDeleteLink.cs" />
     <Compile Include="Command\CmdDeleteSchedule.cs" />
     <Compile Include="Command\CmdDeleteSheet.cs" />
@@ -133,6 +134,9 @@
     <Compile Include="PresentationWPF\ViewModels\SheetExtension.cs" />
     <Compile Include="PresentationWPF\ViewModels\ViewExtension.cs" />
     <Compile Include="PresentationWPF\ViewModels\ViewModelBase.cs" />
+    <Compile Include="PresentationWPF\Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PresentationWPF\Views\DeleteLinkWindow.xaml.cs">
       <DependentUpon>DeleteLinkWindow.xaml</DependentUpon>
     </Compile>
@@ -156,10 +160,21 @@
     <Compile Include="Utils\ViewUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image\GSA logo.png" />
-    <Resource Include="Image\GSA.ico" />
+    <Resource Include="Image\GSA logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\GSAAbout.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\GSA.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="PresentationWPF\Views\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PresentationWPF\Views\DeleteLinkWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

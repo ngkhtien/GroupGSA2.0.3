@@ -13,11 +13,17 @@ namespace GroupGSA.Constants
       public const string SMALL_IMAGE_ON = "On_16x16.png";
       public const string SMALL_IMAGE_OFF = "Off_16x16.png";
 
-      public const string RIBBON_TAB = "Group GSA Tools 2.0.3";
-      public const string RIBBONPANEL_ABOUT = "Information";
+      public const string RIBBON_TAB = "GroupGSA Tools 3.0.0";
+      public const string RIBBONPANEL_ABOUT = "Group GSA";
       public const string RIBBONPANEL_PROJECTMANAGEMENT = "Project Management";
       public const string RIBBONPANEL_PROJECTSETUP = "Project Setup";
       public const string RIBBONPANEL_AUTOMATIONPACKAGE = "Automation Package";
+
+      public const string BUTTON_ABOUT_NAME = "cmdAbout";
+      public const string BUTTON_ABOUT_TEXT = "About";
+      public const string BUTTON_ABOUT_IMAGE = "GSA.ico";
+      public const string BUTTON_ABOUT_TOOLTIP = "About Group GSA Tools 3.0.0";
+      public const string BUTTON_ABOUT_LONGDESCRIPTION = "Click to read information about Group GSA Tools 3.0.0";
 
       public const string PULLDOWN_PROJECTCLEANER_NAME = "ProjectCleaner";
       public const string PULLDOWN_PROJECTCLEANER_TEXT = "Project Cleaner";
